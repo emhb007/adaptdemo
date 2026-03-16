@@ -1,0 +1,11 @@
+{
+    "_id": "course",
+    "_type": "course",
+    "title": "Hello Adapt World",
+    "_buttons": {
+        "submit": "Submit",
+        "reset": "Reset",
+        "showCorrectness": "Show correctness",
+        "showFeedback": "Show feedback"
+    }
+}
