@@ -1,0 +1,23 @@
+[
+    {
+        "_id": "c-01",
+        "_parentId": "b-01",
+        "_type": "component",
+        "_component": "text",
+        "_layout": "full",
+        "title": "Hello World!",
+        "body": "Welcome to your first Adapt course. This text is rendered from a JSON component."
+    },
+    {
+        "_id": "c-02",
+        "_parentId": "b-01",
+        "_type": "component",
+        "_component": "image",
+        "_layout": "full",
+        "title": "Sample Image",
+        "_asset": {
+            "src": "course/en/assets/hello-world.jpg",
+            "alt": "A celebratory hello world image"
+        }
+    }
+]
