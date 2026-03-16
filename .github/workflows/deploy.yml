@@ -23,6 +23,7 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
+          package-manager-cache: false
 
       # 3. Install Global Dependencies (Grunt is the engine for Adapt)
       - name: Install Grunt CLI
