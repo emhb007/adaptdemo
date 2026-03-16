@@ -16,7 +16,7 @@
         "_layout": "full",
         "title": "Sample Image",
         "_asset": {
-            "src": "course/en/assets/hello-world.jpg",
+            "src": "course/en/assets/th_crest.png",
             "alt": "A celebratory hello world image"
         }
     }
