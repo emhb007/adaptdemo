@@ -1,0 +1,46 @@
+name: Build and Deploy Adapt Course
+
+on:
+  push:
+    branches:
+      - main  # Set this to your default branch
+
+permissions:
+  contents: write # Needed to push the build to the gh-pages branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the source code from your repo
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js (Adapt usually prefers LTS versions like 14 or 16)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+          cache: 'npm'
+
+      # 3. Install Global Dependencies (Grunt is the engine for Adapt)
+      - name: Install Grunt CLI
+        run: npm install -g grunt-cli
+
+      # 4. Install Project Dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # 5. Run the Adapt Build
+      # This creates the 'build' folder containing the web-ready course
+      - name: Build Course
+        run: grunt build
+
+      # 6. Deploy to GitHub Pages
+      # This takes the contents of the /build folder and pushes it to a gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build # The directory the action will deploy
+          branch: gh-pages # The branch the action will deploy to
