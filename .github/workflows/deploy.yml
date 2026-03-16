@@ -35,7 +35,7 @@ jobs:
       
       # 4.1 Install adapt Dependencies
       - name: Install adapt
-        run: adapt install
+        run: npm install -g adapt-cli
         
 
       # 5. Run the Adapt Build
