@@ -37,7 +37,14 @@ jobs:
       - name: Install adapt
         run: npm install -g adapt-cli
         
-
+      # 4.2 get adapt version
+      - name: adapt version
+        run: adapt version
+        
+      # 4.3 get adapt version
+      - name: adapt install
+        run: adapt install
+        
       # 5. Run the Adapt Build
       # This creates the 'build' folder containing the web-ready course
       - name: Build Course
