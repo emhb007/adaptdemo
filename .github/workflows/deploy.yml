@@ -46,8 +46,8 @@ jobs:
         run: adapt install
 
       # 4.4 create adapt course
-      #- name: adapt create course
-      #  run: adapt create course "My Course"
+      - name: adapt create course
+        run: adapt create course my-test-course && tree .
 
       # 4.4 mover to adapt course
       #- name: change to course dir
