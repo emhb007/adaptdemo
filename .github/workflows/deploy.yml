@@ -29,9 +29,9 @@ jobs:
       - name: Install Grunt CLI
         run: npm install -g grunt-cli
 
-      # 4. Install Project Dependencies
-      #- name: Install Dependencies
-      #  run: npm install
+     #  4. Install Project Dependencies
+      - name: Install Dependencies
+        run: npm install
       
       # 4.1 Install adapt Dependencies
       - name: Install adapt
@@ -50,8 +50,8 @@ jobs:
       #  run: adapt create course "My Course"
 
       # 4.4 mover to adapt course
-      - name: change to course dir
-        run: cd src/course/ && ls
+      #- name: change to course dir
+      #  run: cd src/course/ && ls
         
       # 5. Run the Adapt Build
       # This creates the 'build' folder containing the web-ready course
