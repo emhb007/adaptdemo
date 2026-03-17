@@ -51,7 +51,7 @@ jobs:
 
       # 4.4 mover to adapt course
       - name: change to course dir
-        run: cd src/course
+        run: cd src/course/ && ls
         
       # 5. Run the Adapt Build
       # This creates the 'build' folder containing the web-ready course
