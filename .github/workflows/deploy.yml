@@ -16,8 +16,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Node 24 is still too new for older Grunt plugins; 
-      # Node 16 or 18 is highly recommended for Adapt framework stability.
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -26,7 +24,7 @@ jobs:
       - name: Install Global Dependencies
         run: |
           npm ci
-          npx -y -p adapt-cli adapt install
+          npx -y -p grunt-cli adapt-cli adapt install
           #npm install -g grunt-cli
           #npm install -g adapt-cli
 
