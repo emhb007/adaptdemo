@@ -16,30 +16,35 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
 
+      # Node 24 is still too new for older Grunt plugins; 
+      # Node 16 or 18 is highly recommended for Adapt framework stability.
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '24' 
+          node-version: '18' 
 
       - name: Install Global Dependencies
         run: |
           npm install -g grunt-cli
           npm install -g adapt-cli
 
-      - name: Install Course
-        # This installs its internal dependencies
-        run: |
-          cd src/course
-          npm install 
-       #   adapt help create
-       #   adapt create course my-test-course .
-       #   cd my-test-course
+      - name: Install Project Dependencies
+        # Run this at the root to install Grunt plugins defined in package.json
+        run: npm install 
 
+      - name: Install Adapt Plugins
+        # Run this at the root to download components/extensions/themes into src/
+        run: adapt install
 
       - name: Build Course
-        #working-directory: ./my-test-course
-        working-directory: ./src/course
+        # Run at the root. Removed the working-directory parameter.
         run: grunt build --languages=en --verbose
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build 
+          branch: gh-pages
 
       # 6. Deploy to GitHub Pages
       # This takes the contents of the /build folder and pushes it to a gh-pages branch
