@@ -29,7 +29,7 @@ jobs:
       - name: Create and Install Course
         # This creates the course and installs its internal dependencies
         run: |
-          adapt create course --allow-root my-test-course
+          adapt create course my-test-course
           cd my-test-course
           npm install 
 
