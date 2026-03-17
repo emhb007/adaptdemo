@@ -13,49 +13,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Check out the source code from your repo
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
-      # 2. Set up Node.js (Adapt usually prefers LTS versions like 14 or 16)
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: '24'
-          cache: 'npm'
-          #package-manager-cache: false # Explicitly disable caching if you don't have a lockfile
+          node-version: '16' # Use 14 or 16 for maximum compatibility
 
-      # 3. Install Global Dependencies (Grunt is the engine for Adapt)
-      - name: Install Grunt CLI
-        run: npm install -g grunt-cli
+      - name: Install Global Dependencies
+        run: |
+          npm install -g grunt-cli
+          npm install -g adapt-cli
 
-     #  4. Install Project Dependencies
-      - name: Install Dependencies
-        run: npm install
-      
-      # 4.1 Install adapt Dependencies
-      - name: Install adapt
-        run: npm install -g adapt-cli
-        
-      # 4.2 get adapt version
-      - name: adapt version
-        run: adapt version
-        
-      # 4.3 get adapt version
-      - name: adapt install
-        run: adapt install
+      - name: Create and Install Course
+        # This creates the course and installs its internal dependencies
+        run: |
+          adapt create course --allow-root my-test-course
+          cd my-test-course
+          npm install 
 
-      # 4.4 create adapt course
-      - name: adapt create course
-        run: adapt create course my-test-course
-
-      # 4.4 mover to adapt course
-      #- name: change to course dir
-      #  run: cd src/course/ && ls
-        
-      # 5. Run the Adapt Build
-      # This creates the 'build' folder containing the web-ready course
       - name: Build Course
+        working-directory: ./my-test-course
         run: grunt build --languages=en
 
       # 6. Deploy to GitHub Pages
