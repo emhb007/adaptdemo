@@ -14,27 +14,29 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       # Node 24 is still too new for older Grunt plugins; 
       # Node 16 or 18 is highly recommended for Adapt framework stability.
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: '24' 
+          node-version: 'lts/*' 
 
       - name: Install Global Dependencies
         run: |
-          npm install -g grunt-cli
-          npm install -g adapt-cli
+          npm ci
+          npx -y -p -adapt-cli adapt install
+          #npm install -g grunt-cli
+          #npm install -g adapt-cli
 
-      - name: Install Project Dependencies
+      #- name: Install Project Dependencies
         # Run this at the root to install Grunt plugins defined in package.json
-        run: npm install 
+     #   run: npm install 
 
-      - name: Install Adapt Plugins
+    #  - name: Install Adapt Plugins
         # Run this at the root to download components/extensions/themes into src/
-        run: adapt install
+    #    run: adapt install
 
       - name: Build Course
         # Run at the root. Removed the working-directory parameter.
