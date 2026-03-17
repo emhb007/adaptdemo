@@ -29,11 +29,12 @@ jobs:
       - name: Create and Install Course
         # This creates the course and installs its internal dependencies
         run: |
+          cd src/course
+          npm install 
        #   adapt help create
        #   adapt create course my-test-course .
        #   cd my-test-course
-           cd src/course
-           npm install 
+
 
       - name: Build Course
         #working-directory: ./my-test-course
