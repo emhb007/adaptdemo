@@ -3,7 +3,7 @@ name: Build and Deploy Adapt Course
 on:
   push:
     branches:
-      - main  # Set this to your default branch
+      - main  
 
 permissions:
   contents: write # Needed to push the build to the gh-pages branch
@@ -19,15 +19,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '24' # Use 14 or 16 for maximum compatibility
+          node-version: '24' 
 
       - name: Install Global Dependencies
         run: |
           npm install -g grunt-cli
           npm install -g adapt-cli
 
-      - name: Create and Install Course
-        # This creates the course and installs its internal dependencies
+      - name: Install Course
+        # This installs its internal dependencies
         run: |
           cd src/course
           npm install 
