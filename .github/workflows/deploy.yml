@@ -24,7 +24,7 @@ jobs:
       - name: Install Global Dependencies
         run: |
           npm ci
-          npx -y -p grunt-cli adapt-cli adapt install
+          npx -y -p adapt-cli adapt install
           #npm install -g grunt-cli
           #npm install -g adapt-cli
 
