@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '18' 
+          node-version: '24' 
 
       - name: Install Global Dependencies
         run: |
@@ -45,11 +45,3 @@ jobs:
         with:
           folder: build 
           branch: gh-pages
-
-      # 6. Deploy to GitHub Pages
-      # This takes the contents of the /build folder and pushes it to a gh-pages branch
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: build # The directory the action will deploy
-          branch: gh-pages # The branch the action will deploy to
