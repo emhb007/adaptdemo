@@ -39,7 +39,7 @@ jobs:
       - name: Build Course
         #working-directory: ./my-test-course
         working-directory: ./src/course
-        run: grunt build --languages=en
+        run: grunt build --languages=en --verbose
 
       # 6. Deploy to GitHub Pages
       # This takes the contents of the /build folder and pushes it to a gh-pages branch
