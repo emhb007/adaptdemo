@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Use 14 or 16 for maximum compatibility
+          node-version: '22' # Use 14 or 16 for maximum compatibility
 
       - name: Install Global Dependencies
         run: |
